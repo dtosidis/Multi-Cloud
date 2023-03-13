@@ -203,14 +203,24 @@ variable "app_count" {
 }
 
 ####### Your Additions Will Start Here ######
-resource "aws_s3_bucket" "example" {
-  bucket = "udacity-dimitrios-aws-s3-bucket"
+resource "aws_s3_bucket" "udacity-dimitrios-aws-s3-bucket" {
+  bucket = "dimitrios"
 }
 
-resource "aws_s3_bucket_public_access_block" "example" {
-  bucket = aws_s3_bucket.example.id
+resource "aws_dynamodb_table" "udacity-dimitrios-aws-dynamodb" {
+  provider         = "aws.main"
+  name             = "dimitrios"
+  hash_key         = "UserId"
+  billing_mode     = "PROVISIONED"
+  stream_enabled   = true
+  stream_view_type = "NEW_AND_OLD_IMAGES"
 
-  block_public_acls   = true
-  block_public_policy = true
+  attribute {
+    name = "UserId"
+    type = "S"
+  }
+
+  lifecycle {
+    ignore_changes = [replica]
+  }
 }
-
