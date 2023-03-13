@@ -203,8 +203,14 @@ variable "app_count" {
 }
 
 ####### Your Additions Will Start Here ######
+
 resource "aws_s3_bucket" "udacity-dimitrios-aws-s3-bucket" {
   bucket = "dimitrios"
+}
+
+provider "aws" {
+  alias  = "main"
+  region = "us-west-2"
 }
 
 resource "aws_dynamodb_table" "udacity-dimitrios-aws-dynamodb" {
