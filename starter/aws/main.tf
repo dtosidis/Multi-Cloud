@@ -210,7 +210,7 @@ resource "aws_s3_bucket" "udacity-dimitrios-aws-s3-bucket" {
 
 provider "aws" {
   alias  = "main"
-  region = "us-west-2"
+  region = "us-east-2"
 }
 
 resource "aws_dynamodb_table" "udacity-dimitrios-aws-dynamodb" {
