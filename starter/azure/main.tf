@@ -12,7 +12,7 @@ resource "azurerm_container_group" "udacity" {
 
   container {
     name   = "azure-container-app"
-    image  = "docker.io/dimitrios/azure_app:1.0"
+    image  = "docker.io/tscotto5/azure_app:1.0"
     cpu    = "0.5"
     memory = "1.5"
     environment_variables = {
@@ -30,3 +30,36 @@ resource "azurerm_container_group" "udacity" {
 }
 
 ####### Your Additions Will Start Here ######
+
+resource "azurerm_app_service_plan" "example" {
+  name                = "example-appserviceplan"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+
+  sku {
+    tier = "Standard"
+    size = "S1"
+  }
+}
+
+resource "azurerm_app_service" "example" {
+  name                = "udacity-dimitrios-azure-dotnet-app"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+  app_service_plan_id = azurerm_app_service_plan.example.id
+
+  site_config {
+    dotnet_framework_version = "v4.0"
+    scm_type                 = "LocalGit"
+  }
+
+  app_settings = {
+    "SOME_KEY" = "some-value"
+  }
+
+  connection_string {
+    name  = "Database"
+    type  = "SQLServer"
+    value = "Server=some-server.mydomain.com;Integrated Security=SSPI"
+  }
+}
