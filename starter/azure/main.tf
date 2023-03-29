@@ -52,15 +52,12 @@ resource "azurerm_sql_server" "dimitrios" {
   }
 }
 
-resource "azurerm_app_service_plan" "dimitrios" {
-  name                = "example-appserviceplan"
-  location            = data.azurerm_resource_group.udacity.location
+resource "azurerm_service_plan" "dimitrios" {
+  name                = "udacity"
   resource_group_name = data.azurerm_resource_group.udacity.name
-
-  sku {
-    tier = "Standard"
-    size = "S1"
-  }
+  location            = data.azurerm_resource_group.udacity.location
+  os_type             = "Linux"
+  sku_name            = "P1v2"
 }
 
 resource "azurerm_app_service" "dimitrios" {
