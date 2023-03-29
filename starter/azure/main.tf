@@ -33,8 +33,8 @@ resource "azurerm_container_group" "udacity" {
 
 resource "azurerm_app_service_plan" "example" {
   name                = "example-appserviceplan"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.udacity.location
+  resource_group_name = azurerm_resource_group.udacity.name
 
   sku {
     tier = "Standard"
@@ -44,8 +44,8 @@ resource "azurerm_app_service_plan" "example" {
 
 resource "azurerm_app_service" "example" {
   name                = "udacity-dimitrios-azure-dotnet-app"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.udacity.location
+  resource_group_name = azurerm_resource_group.udacity.name
   app_service_plan_id = azurerm_app_service_plan.example.id
 
   site_config {
