@@ -31,7 +31,28 @@ resource "azurerm_container_group" "udacity" {
 
 ####### Your Additions Will Start Here ######
 
-resource "azurerm_app_service_plan" "example" {
+resource "azurerm_storage_account" "dimitrios" {
+  name                     = "dimitriossa"
+  resource_group_name      = data.azurerm_resource_group.udacity.name
+  location                 = data.azurerm_resource_group.udacity.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+}
+
+resource "azurerm_sql_server" "dimitrios" {
+  name                         = "dimitriosmssqlserver"
+  resource_group_name          = data.azurerm_resource_group.udacity.name
+  location                     = data.azurerm_resource_group.udacity.location
+  version                      = "12.0"
+  administrator_login          = "mradministrator"
+  administrator_login_password = "thisIsDog11"
+
+  tags = {
+    environment = "production"
+  }
+}
+
+resource "azurerm_app_service_plan" "dimitrios" {
   name                = "example-appserviceplan"
   location            = data.azurerm_resource_group.udacity.location
   resource_group_name = data.azurerm_resource_group.udacity.name
@@ -42,7 +63,7 @@ resource "azurerm_app_service_plan" "example" {
   }
 }
 
-resource "azurerm_app_service" "example" {
+resource "azurerm_app_service" "dimitrios" {
   name                = "udacity-dimitrios-azure-dotnet-app"
   location            = data.azurerm_resource_group.udacity.location
   resource_group_name = data.azurerm_resource_group.udacity.name
