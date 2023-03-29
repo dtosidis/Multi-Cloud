@@ -148,3 +148,25 @@ In AWS you may only be able to run 1 or 2 exercises at a time. If you get an err
 ## License
 
 [License](LICENSE.txt)
+
+## The DynamoDB has been chosen as a NoSQL database
+
+DynamoDB is the perfect solution, if you are looking for a cloud-based NoSQL database service. It is cost-effective and provides a variety of additional features.
+
+Here are some of the most common use cases of DynamoDB:
+
+-    If your application already uses other AWS services.
+-    Applications that require uninterrupted performance at scaling.
+-    Real-time streaming applications.
+-    For scalable applications.
+-    Shopping carts and gaming platforms.
+
+The Azure Cosmos DB is the DynamoDB`s counterpart. The Cosmos DB is a better choice for any serverless application requiring milliseconds response times with high scalability. It natively and extensively supports multiple data models (key-value, documents, and graphs) and many APIs for data access, including Cosmos DB API for MongoDB, SQL API, Gremlin API, and Tables API.
+
+Here are some of the most common use cases of Cosmos DB:
+
+-    E-commerce platforms.
+-    Simulating social interactions
+-    Creating complex iOS and Android applications.
+-    Gaming applications.
+-    Internet of Things.
