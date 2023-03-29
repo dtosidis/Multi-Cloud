@@ -64,7 +64,7 @@ resource "azurerm_app_service" "dimitrios" {
   name                = "udacity-dimitrios-azure-dotnet-app"
   location            = data.azurerm_resource_group.udacity.location
   resource_group_name = data.azurerm_resource_group.udacity.name
-  app_service_plan_id = azurerm_app_service_plan.dimitrios.id
+  app_service_plan_id = azurerm_service_plan.dimitrios.id
 
   site_config {
     dotnet_framework_version = "v4.0"
